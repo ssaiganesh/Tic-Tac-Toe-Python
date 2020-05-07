@@ -57,17 +57,17 @@ def winner(name1, name2):
 boardprint()
 q  = 0
 
-def checkboard():
-    while True:
-        positionX = int(input(f'{name1}, which position do you want x to be in'))
-        if board[positionX] == positionX:
-            board[positionX] = "X"
-            break
-        else:
-            "Invalid Input. Try Again."
+def checkboard(s):
+        while True:
+            positionX = int(input(f'{name1}, which position do you want x to be in'))
+            if board[positionX] == positionX:
+                board[positionX] = s
+                break
+            else:
+                "Invalid Input. Try Again."
 
 while True:
-    checkboard()
+    checkboard("X")
     boardprint()
     q += 1
     if winner(name1, name2) != 0:
@@ -76,8 +76,7 @@ while True:
         print("It's a draw.")
         break
     else:
-        positionO = int(input(f'{name2}, Which position do you want O to be in? '))
-        board[positionO] = "O"
+        checkboard("O")
         boardprint()
         q += 1
         if winner(name1,name2) != 0:
