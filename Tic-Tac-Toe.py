@@ -55,14 +55,13 @@ while (q<9):
     positionX = int(input(f'{name1}, which position do you want X to be in? '))
     board[positionX] = "X"
     boardprint()
-    if winner(name1, name2):
-
+    if winner(name1, name2) != 0:
         break
     else:
         positionO = int(input(f'{name2}, Which position do you want O to be in? '))
         board[positionO] = "O"
         boardprint()
-        if winner(name1,name2):
+        if winner(name1,name2) != 0:
             break
     q += 1
 else:
