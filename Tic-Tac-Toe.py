@@ -13,6 +13,9 @@ def decideshape(name1, name2):
             name1, name2 = name2, name1
         print(name1, "will begin first with X")
         print(name2, "will be after", name1, "with O")
+        return (name1,name2)
+
+name1, name2 = decideshape(name1,name2)
 
 
 def boardprint():
@@ -48,7 +51,6 @@ def winner(name1, name2):
     else:
         return 0
 
-decideshape(name1, name2)
 boardprint()
 q  = 0
 while (q<9):
