@@ -59,17 +59,25 @@ q  = 0
 
 def checkboard(s):
         while True:
-            positionX = int(input(f'{name1}, which position do you want x to be in'))
-            if board[positionX] == positionX:
-                board[positionX] = s
-                break
-            else:
+            if s=="X":
+                positionX = int(input(f'{name1}, which position do you want X to be in'))
+                if board[positionX] == positionX:
+                    board[positionX] = s
+                    break
+                else:
+                "Invalid Input. Try Again."
+            if s == "O":
+                positionO = int(input(f'{name2}, which position do you want O to be in'))
+                if board[positionO] == positionO:
+                    board[positionO] = s
+                    break
+                else:
                 "Invalid Input. Try Again."
 
 while True:
     checkboard("X")
     boardprint()
-    q += 1
+    q+=1
     if winner(name1, name2) != 0:
         break
     elif q == 9:
