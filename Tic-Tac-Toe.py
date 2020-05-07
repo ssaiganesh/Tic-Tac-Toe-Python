@@ -65,14 +65,14 @@ def checkboard(s):
                     board[positionX] = s
                     break
                 else:
-                "Invalid Input. Try Again."
+                    print("Invalid Input. Try Again.")
             if s == "O":
                 positionO = int(input(f'{name2}, which position do you want O to be in'))
                 if board[positionO] == positionO:
                     board[positionO] = s
                     break
                 else:
-                "Invalid Input. Try Again."
+                    print("Invalid Input. Try Again.")
 
 while True:
     checkboard("X")
