@@ -20,9 +20,9 @@ def boardprint():
 
 def checkwinner(i,name1, name2):
     if board[i] == "X":
-        print(name1,'wins.')   
+        print(name1,'wins.Thanks for playing.')   
     else:
-        print(name2, 'wins.')
+        print(name2, 'wins. Thanks for playing.')
 
 def winner(name1, name2):
     if board[0] == board[1] == board[2]:
@@ -65,7 +65,7 @@ while (q<9):
             break
     q += 1
 else:
-    print("It's a draw")
+    print("It's a draw. Thanks for playing.")
 
 
 
