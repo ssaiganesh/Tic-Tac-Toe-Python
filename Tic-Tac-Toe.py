@@ -48,26 +48,33 @@ def winner(name1, name2):
 
     elif board[3] == board[4] == board[5]:
         checkwinner(3,name1,name2)
+    
+    elif board[6] == board[7] == board[8]:
+        checkwinner(6,name1,name2)
     else:
         return 0
 
 boardprint()
 q  = 0
-while (q<9):
+while True:
     positionX = int(input(f'{name1}, which position do you want X to be in? '))
     board[positionX] = "X"
     boardprint()
+    q += 1
     if winner(name1, name2) != 0:
+        break
+    elif q == 9:
+        print("It's a draw.")
         break
     else:
         positionO = int(input(f'{name2}, Which position do you want O to be in? '))
         board[positionO] = "O"
         boardprint()
+        q += 1
         if winner(name1,name2) != 0:
             break
-    q += 1
-else:
-    print("It's a draw. Thanks for playing.")
+
+
 
 
 
