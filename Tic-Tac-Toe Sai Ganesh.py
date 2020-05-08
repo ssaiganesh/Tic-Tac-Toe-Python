@@ -1,31 +1,6 @@
 #Please make improvements in comments. 
+
 import random
-
-print("Welcome to the Tic Tac Toe Game by SAI GANESH")
-board = [0,1,2,3,4,5,6,7,8]
-while True:
-    name1 = input("First Player, enter your name: ")
-    if not name1.strip():
-        print("Invalid. Try again")
-    else:
-        break
-
-#This block of code confirms if user is playing with computer or another player
-while True:
-    playchoice = input(name1+", will you be playing Multi-player(M) or Single-player(S). ")
-    if playchoice.upper().startswith("M"):
-        while True:
-            name2 = input("Second Player, enter your name: ")
-            if not name2.strip():
-                print("Invalid. Try again")
-            else:
-                break
-        break
-    elif playchoice.upper().startswith("S"):
-        name2 = "Computer"
-        break
-    else:
-        print("Invalid Input. Try again.")
 
 #this function decides shape of player(s)/computer
 def decideshape(name1, name2):
@@ -45,8 +20,6 @@ def decideshape(name1, name2):
     print(name1, "will begin first with X")
     print(name2, "will be after", name1, "with O")
     return (name1,name2,computershape)
-
-name1, name2, computershape = decideshape(name1,name2) #outpput of above function
 
 #this function prints the tic-tac-toe board
 def boardprint():
@@ -81,7 +54,7 @@ def computermove(computershape):
         else:
             computerrandom()
 
-    if board[0] == board[1] or board[5] == board[8] or board[4] == board[6]:
+    elif board[0] == board[1] or board[5] == board[8] or board[4] == board[6]:
         if board[2] == 2:
             board[2] = computershape
         else:
@@ -158,7 +131,7 @@ def winner(name1, name2):
 def checkboard(s):
     while True:
         if s=="X":
-            positionX = int(input(f'{name1}, which position do you want X to be in'))
+            positionX = int(input(f'{name1}, which position do you want X to be in? '))
             if board[positionX] == positionX:
                 board[positionX] = s
                 break
@@ -166,38 +139,49 @@ def checkboard(s):
                 print("Invalid Input. Try Again.")
             
         elif s == "O":
-            positionO = int(input(f'{name2}, which position do you want O to be in'))
+            positionO = int(input(f'{name2}, which position do you want O to be in? '))
             if board[positionO] == positionO:
                 board[positionO] = s
                 break
             else:
                 print("Invalid Input. Try Again.")
-            
-        
-    
 
-boardprint()
-q  = 0
-    
-while True:
-    if playchoice.upper().startswith("M"):
-        checkboard("X")
-        boardprint()
-        q+=1
-        if winner(name1, name2) != 0:
+
+
+replay = True
+while replay:
+    print("Welcome to the Tic Tac Toe Game by SAI GANESH")
+    board = [0,1,2,3,4,5,6,7,8]
+    while True:
+        name1 = input("First Player, enter your name: ")
+        if not name1.strip():
+            print("Invalid. Try again")
+        else:
             break
-        elif q == 9:
-            print("It's a draw.")
+        
+        #This block of code confirms if user is playing with computer or another player
+    while True:
+        playchoice = input(name1+", will you be playing Multi-player(M) or Single-player(S). ")
+        if playchoice.upper().startswith("M"):
+            while True:
+                name2 = input("Second Player, enter your name: ")
+                if not name2.strip():
+                    print("Invalid. Try again")
+                else:
+                    break
+            break
+        elif playchoice.upper().startswith("S"):
+            name2 = "Computer"
             break
         else:
-            checkboard("O")
-            boardprint()
-            q += 1
-            if winner(name1,name2) != 0:
-                break
-    elif playchoice.upper().startswith("S"):
-        if computershape == "X":
-            computermove(computershape)
+            print("Invalid Input. Try again.")
+    
+    name1, name2, computershape = decideshape(name1,name2) 
+    boardprint()
+    q  = 0
+    while True:
+        if playchoice.upper().startswith("M"):
+            checkboard("X")
             boardprint()
             q+=1
             if winner(name1, name2) != 0:
@@ -211,22 +195,41 @@ while True:
                 q += 1
                 if winner(name1,name2) != 0:
                     break
-        
-        elif computershape == "O":
-            checkboard("X")
-            boardprint()
-            q+=1
-            if winner(name1,name2) != 0:
-                break
-            
-            elif q == 9:
-                print("It's a draw.")
-                break
-            else:
+        elif playchoice.upper().startswith("S"):
+            if computershape == "X":
                 computermove(computershape)
-                print("Computer is thinking..")
                 boardprint()
                 q+=1
                 if winner(name1, name2) != 0:
                     break
-
+                elif q == 9:
+                    print("It's a draw.")
+                    break
+                else:
+                    checkboard("O")
+                    boardprint()
+                    q += 1
+                    if winner(name1,name2) != 0:
+                        break
+        
+            elif computershape == "O":
+                checkboard("X")
+                boardprint()
+                q+=1
+                if winner(name1,name2) != 0:
+                    break
+                elif q == 9:
+                    print("It's a draw.")
+                    break
+                else:
+                    computermove(computershape)
+                    print("Computer is thinking..")
+                    boardprint()
+                    q+=1
+                    if winner(name1, name2) != 0:
+                        break
+    replay_input = input("Would you like to play again? Y/N: ")
+    if replay_input.upper().startswith("N"):
+        break
+    elif replay_input.upper().startsiwth("Y"):
+        print("Game will now restart.")
