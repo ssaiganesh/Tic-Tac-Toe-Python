@@ -15,17 +15,17 @@ def decideshape(name1, name2):
         print(name2, "will be after", name1, "with O")
         return (name1,name2)
 
-name1, name2 = decideshape(name1,name2)
-
 
 def boardprint():
     print(f'{board[0]}|{board[1]}|{board[2]}\n{board[3]}|{board[4]}|{board[5]}\n{board[6]}|{board[7]}|{board[8]}')
+
 
 def checkwinner(i,name1, name2):
     if board[i] == "X":
         print(name1,'wins.Thanks for playing.')   
     else:
         print(name2, 'wins. Thanks for playing.')
+
 
 def winner(name1, name2):
     if board[0] == board[1] == board[2]:
@@ -54,8 +54,6 @@ def winner(name1, name2):
     else:
         return 0
 
-boardprint()
-q  = 0
 
 def checkboard(s):
         while True:
@@ -66,13 +64,18 @@ def checkboard(s):
                     break
                 else:
                     print("Invalid Input. Try Again.")
-            if s == "O":
+            elif s == "O":
                 positionO = int(input(f'{name2}, which position do you want O to be in'))
                 if board[positionO] == positionO:
                     board[positionO] = s
                     break
                 else:
                     print("Invalid Input. Try Again.")
+
+
+name1, name2 = decideshape(name1,name2)
+boardprint()
+q  = 0
 
 while True:
     checkboard("X")
