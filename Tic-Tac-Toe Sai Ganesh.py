@@ -231,5 +231,5 @@ while replay:
     replay_input = input("Would you like to play again? Y/N: ")
     if replay_input.upper().startswith("N"):
         break
-    elif replay_input.upper().startsiwth("Y"):
+    elif replay_input.upper().startswith("Y"):
         print("Game will now restart.")
